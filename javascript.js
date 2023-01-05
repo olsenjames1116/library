@@ -3,7 +3,6 @@ const author = document.querySelector('input#author');
 const pages = document.querySelector('input#pages');
 const read = document.querySelector('input#read');
 const submitButton = document.querySelector('form>button[type=button]');
-const removeButton = document.querySelector('body>button');
 const mainContent = document.querySelector('div.mainContent');
 const libraryArray = [];
 
@@ -12,6 +11,12 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+function removeBook(book) {
+    const bookIndex = libraryArray.indexOf(book);
+    libraryArray.splice(bookIndex, 1);
+    displayBooks(libraryArray);
 }
 
 function createCard(book) {
@@ -35,6 +40,7 @@ function createCard(book) {
     const removeBookButton = document.createElement('button');
     removeBookButton.setAttribute('type', 'button');
     removeBookButton.textContent = 'Remove Book';
+    removeBookButton.addEventListener('click', () => removeBook(book));
     cardElement.appendChild(removeBookButton);
     return cardElement;
 }
@@ -48,11 +54,7 @@ function displayBooks(libraryArray) {
 }
 
 submitButton.addEventListener('click', () => {
-    if (read.checked === true) {
-        read.value = true;
-    } else {
-        read.value = false;
-    }
+    read.checked === true ? (read.value = true) : (read.value = false);
 
     const userBook = new Book(
         title.value,
@@ -62,10 +64,6 @@ submitButton.addEventListener('click', () => {
     );
 
     libraryArray.push(userBook);
-    displayBooks(libraryArray);
-});
-
-removeButton.addEventListener('click', () => {
-    libraryArray.pop();
     console.table(libraryArray);
+    displayBooks(libraryArray);
 });
