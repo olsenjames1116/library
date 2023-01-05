@@ -4,6 +4,7 @@ const pages = document.querySelector('input#pages');
 const read = document.querySelector('input#read');
 const submitButton = document.querySelector('form>button[type=button]');
 const removeButton = document.querySelector('body>button');
+const mainContent = document.querySelector('div.mainContent');
 const libraryArray = [];
 
 function Book(title, author, pages, read) {
@@ -11,6 +12,17 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+function displayBooks(libraryArray) {
+    mainContent.innerHTML = '';
+    libraryArray.forEach((book) => {
+        const card = document.createElement('div.card');
+        const cardTitle = document.createElement('p');
+        cardTitle.textContent = book.title;
+        card.appendChild(cardTitle);
+        mainContent.appendChild(card);
+    });
 }
 
 submitButton.addEventListener('click', () => {
@@ -28,7 +40,7 @@ submitButton.addEventListener('click', () => {
     );
 
     libraryArray.push(userBook);
-    console.table(libraryArray);
+    displayBooks(libraryArray);
 });
 
 removeButton.addEventListener('click', () => {
