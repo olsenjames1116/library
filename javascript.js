@@ -14,4 +14,8 @@ const leviathanWakes = new Book(
     true
 );
 
-console.log(leviathanWakes.info);
+console.table(leviathanWakes);
+
+const libraryArray = [leviathanWakes];
+
+console.table(libraryArray);
