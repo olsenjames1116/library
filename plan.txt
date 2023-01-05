@@ -33,8 +33,8 @@ Steps:
 //Input type text with label "Author"//
 //Input type number with label "Pages"//
 //Input type checkbox with label "Read?"//
-//Make all info required
-//Button type submit to submit info
+//Make all info required//
+//Button type submit to submit info//
 //Display inputs to make sure they worked
 //Add event listener for submit action to create a new Book object
 //Create a new book object and run it through constructor with input
