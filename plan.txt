@@ -35,7 +35,7 @@ Steps:
 //Input type checkbox with label "Read?"//
 //Make all info required//
 //Button type submit to submit info//
-//Display inputs to make sure they worked
+//Display inputs to make sure they worked//
 //Add event listener for submit action to create a new Book object
 //Create a new book object and run it through constructor with input
 //Display to make sure it worked

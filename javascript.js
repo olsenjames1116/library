@@ -4,7 +4,12 @@ const pages = document.querySelector('input#pages');
 const read = document.querySelector('input#read');
 const submitButton = document.querySelector('form>button[type=button]');
 
-submitButton.addEventListener('click', (event) => {
+submitButton.addEventListener('click', () => {
+    if (read.checked === true) {
+        read.value = true;
+    } else {
+        read.value = false;
+    }
     console.log(`${title.value} ${author.value} ${pages.value} ${read.value}`);
 });
 
