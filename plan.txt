@@ -1,0 +1,20 @@
+Understanding the problem:
+    I need to create a library that stores an array of books all created as objects.
+    These objects will appear on a webpage with cards displaying info for each book.
+    The user will be able to add books, remove books and mark whether or not they have read that book yet.
+
+Plan
+-------
+Does your program have a user interface? What will it look like? What functionality will the interface have?
+    Yes. The interface will be in the form of a webpage that displays cards with the info for each book in the library.
+    The user will be able to add books from a form that populates when they press a button on the page. 
+    Each card will have the option to remove a book or mark whether or not they have read a book.
+What inputs will your program have? Will the user enter data or will you get input from somewhere else?
+
+What's the desired input?
+
+Given your inputs, what are the steps necessary to return the desired output?
+
+
+Steps:
+-------
