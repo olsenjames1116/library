@@ -10,13 +10,22 @@ submitButton.addEventListener('click', () => {
     } else {
         read.value = false;
     }
-    console.log(`${title.value} ${author.value} ${pages.value} ${read.value}`);
+
+    const userBook = new Book(
+        title.value,
+        author.value,
+        pages.value,
+        read.value
+    );
+
+    console.table(userBook);
 });
 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = read;
     this.info = function () {
         return `${title} by ${author}, ${pages} pages, ${read} yet`;
     };
