@@ -14,13 +14,31 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+function createCard(book) {
+    const cardElement = document.createElement('div.card');
+    const cardTitle = document.createElement('p');
+    cardTitle.textContent = book.title;
+    cardElement.appendChild(cardTitle);
+
+    const cardAuthor = document.createElement('p');
+    cardAuthor.textContent = book.author;
+    cardElement.appendChild(cardAuthor);
+
+    const cardPages = document.createElement('p');
+    cardPages.textContent = book.pages;
+    cardElement.appendChild(cardPages);
+
+    const cardRead = document.createElement('p');
+    cardRead.textContent = book.read;
+    cardElement.appendChild(cardRead);
+
+    return cardElement;
+}
+
 function displayBooks(libraryArray) {
     mainContent.innerHTML = '';
     libraryArray.forEach((book) => {
-        const card = document.createElement('div.card');
-        const cardTitle = document.createElement('p');
-        cardTitle.textContent = book.title;
-        card.appendChild(cardTitle);
+        const card = createCard(book);
         mainContent.appendChild(card);
     });
 }
