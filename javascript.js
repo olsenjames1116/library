@@ -3,6 +3,7 @@ const author = document.querySelector('input#author');
 const pages = document.querySelector('input#pages');
 const read = document.querySelector('input#read');
 const submitButton = document.querySelector('form>button[type=button]');
+const removeButton = document.querySelector('body>button');
 const libraryArray = [];
 
 function Book(title, author, pages, read) {
@@ -27,5 +28,10 @@ submitButton.addEventListener('click', () => {
     );
 
     libraryArray.push(userBook);
+    console.table(libraryArray);
+});
+
+removeButton.addEventListener('click', () => {
+    libraryArray.pop();
     console.table(libraryArray);
 });

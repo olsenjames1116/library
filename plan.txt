@@ -42,9 +42,9 @@ Steps:
 //Add button type button so user can mark if they have read it or not//
 //Add event listener to change format of button//
 //Change format of button using DOM manipulation//
-//Add book to library array
-//Test that you can add more than one book to an array
-//Display library array
+//Add book to library array//
+//Test that you can add more than one book to an array//
+//Display library array//
 //Add button to remove book from library
 //Add event listener to remove button
 //Remove requested book from library array by identifying which book was selected and using its id
