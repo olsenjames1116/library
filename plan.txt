@@ -8,13 +8,46 @@ Plan
 Does your program have a user interface? What will it look like? What functionality will the interface have?
     Yes. The interface will be in the form of a webpage that displays cards with the info for each book in the library.
     The user will be able to add books from a form that populates when they press a button on the page. 
-    Each card will have the option to remove a book or mark whether or not they have read a book.
+    Each card will have the option to remove a book and mark whether or not they have read a book.
 What inputs will your program have? Will the user enter data or will you get input from somewhere else?
-
+    The user will be able to input a book title, the author's name, the number of pages and whether or not they have read it from an initial form.
+    From each card, the user will be able to be able to mark whether or not they have read it and can select to remove the book.
 What's the desired input?
-
+    Desired input would be text for the book title and author's name. A number will be desired for the pages in the book. 
+    A boolean will be used for whether or not they have read the book.
 Given your inputs, what are the steps necessary to return the desired output?
-
+    The user will have to select a button to add a new book. They will then enter the title, author, pages and whether or not they have read it into a populated form. 
+    The script file will have to create an object using a constructor and store the book in an array. The book will then be displayed in a card which will be formatted in a grid.
+    The card will populate with two separate buttons to denote whether or not the user has read a book. If they have read, the book, the button will change format to mirror the selection.
+    If the user selects to remove the book, the card will be removed from the screen and the array will remove the requested object.
 
 Steps:
 -------
+//Create a book to test the application
+//Create a Book constructor that takes in a name, title, pages and whether they have read the book
+//Display the book to test it worked
+//Add the book to an library array
+//Display the array to test it worked
+//Create a form that takes in requested input
+//Input type text with label "Title"
+//Input type text with label "Author"
+//Input type number with label "Pages"
+//Input type checkbox with label "Read?"
+//Make all info required
+//Button type submit to submit info
+//Display inputs to make sure they worked
+//Add event listener for submit action to create a new Book object
+//Create a new book object and run it through constructor with input
+//Display to make sure it worked
+//Add button type button so user can mark if they have read it or not
+//Add event listener to change format of button
+//Change format of button using DOM manipulation
+//Add button to remove book from library
+//Add event listener to remove button
+//Remove requested book from library array by identifying which book was selected and using its id
+//Display change to web page so user can see they have successfully removed the book
+//Add another book to the array by using the new book
+//Test the app can differentiate between which book needs to be removed
+//Format the webpage to display cards as grid
+//Add background colors from Tailwind
+//Change the font
