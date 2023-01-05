@@ -32,6 +32,10 @@ function createCard(book) {
     cardRead.textContent = book.read;
     cardElement.appendChild(cardRead);
 
+    const removeBookButton = document.createElement('button');
+    removeBookButton.setAttribute('type', 'button');
+    removeBookButton.textContent = 'Remove Book';
+    cardElement.appendChild(removeBookButton);
     return cardElement;
 }
 
