@@ -26,13 +26,13 @@ Steps:
 //Create a book to test the application//
 //Create a Book constructor that takes in a name, title, pages and whether they have read the book//
 //Display the book to test it worked//
-//Add the book to an library array
-//Display the array to test it worked
+//Add the book to an library array//
+//Display the array to test it worked//
 //Create a form that takes in requested input
-//Input type text with label "Title"
-//Input type text with label "Author"
-//Input type number with label "Pages"
-//Input type checkbox with label "Read?"
+//Input type text with label "Title"//
+//Input type text with label "Author"//
+//Input type number with label "Pages"//
+//Input type checkbox with label "Read?"//
 //Make all info required
 //Button type submit to submit info
 //Display inputs to make sure they worked
