@@ -13,3 +13,5 @@ const leviathanWakes = new Book(
     577,
     true
 );
+
+console.log(leviathanWakes.info);

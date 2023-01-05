@@ -25,7 +25,7 @@ Steps:
 -------
 //Create a book to test the application//
 //Create a Book constructor that takes in a name, title, pages and whether they have read the book//
-//Display the book to test it worked
+//Display the book to test it worked//
 //Add the book to an library array
 //Display the array to test it worked
 //Create a form that takes in requested input
