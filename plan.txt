@@ -36,12 +36,15 @@ Steps:
 //Make all info required//
 //Button type submit to submit info//
 //Display inputs to make sure they worked//
-//Add event listener for submit action to create a new Book object
-//Create a new book object and run it through constructor with input
-//Display to make sure it worked
-//Add button type button so user can mark if they have read it or not
-//Add event listener to change format of button
-//Change format of button using DOM manipulation
+//Add event listener for submit action to create a new Book object//
+//Create a new book object and run it through constructor with input//
+//Display to make sure it worked//
+//Add button type button so user can mark if they have read it or not//
+//Add event listener to change format of button//
+//Change format of button using DOM manipulation//
+//Add book to library array
+//Test that you can add more than one book to an array
+//Display library array
 //Add button to remove book from library
 //Add event listener to remove button
 //Remove requested book from library array by identifying which book was selected and using its id

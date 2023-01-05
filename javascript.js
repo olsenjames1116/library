@@ -3,6 +3,14 @@ const author = document.querySelector('input#author');
 const pages = document.querySelector('input#pages');
 const read = document.querySelector('input#read');
 const submitButton = document.querySelector('form>button[type=button]');
+const libraryArray = [];
+
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+}
 
 submitButton.addEventListener('click', () => {
     if (read.checked === true) {
@@ -18,28 +26,6 @@ submitButton.addEventListener('click', () => {
         read.value
     );
 
-    console.table(userBook);
+    libraryArray.push(userBook);
+    console.table(libraryArray);
 });
-
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function () {
-        return `${title} by ${author}, ${pages} pages, ${read} yet`;
-    };
-}
-
-const leviathanWakes = new Book(
-    'Leviathan Wakes',
-    'James S. A. Corey',
-    577,
-    true
-);
-
-console.table(leviathanWakes);
-
-const libraryArray = [leviathanWakes];
-
-console.table(libraryArray);
