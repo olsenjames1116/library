@@ -1,5 +1,14 @@
+@font-face {
+    font-family: "sevillanaRegular";
+    src: url("./fonts/sevillana-regular-webfont.woff2") format("woff2"), url("./fonts/sevillana-regular-webfont.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
 *{
     /* outline: 1px solid black; */
+    /* font-family: 'sevillanaRegular', sans-serif; */
 }
 
 body{
@@ -14,11 +23,13 @@ div.header{
     grid-area: 1 / 1 / 2 / 3;
     padding: 1rem;
     background-color: #fef2f2;
+    /* font-size: 1.5rem; */
 }
 
 div.sideBar{
     grid-area: 2 / 1 / 3 / 2;
     background-color: #7f1d1d;
+    /* font-size: 1.5rem; */
 }
 
 form{
