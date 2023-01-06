@@ -3,9 +3,10 @@ const title = document.querySelector('input#title');
 const author = document.querySelector('input#author');
 const pages = document.querySelector('input#pages');
 const read = document.querySelector('input#read');
-const submitButton = document.querySelector('form>button[type=button]');
+const submitButton = document.querySelector('div.buttons>button:first-child');
+const clearButton = document.querySelector('div.buttons>button:last-child');
 const mainContent = document.querySelector('div.mainContent');
-const libraryArray = [];
+let libraryArray = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -98,4 +99,9 @@ submitButton.addEventListener('click', () => {
 
     libraryArray.push(userBook);
     displayBooks(libraryArray);
+});
+
+clearButton.addEventListener('click', () => {
+    libraryArray = [];
+    displayBooks();
 });
