@@ -45,12 +45,12 @@ Steps:
 //Add book to library array//
 //Test that you can add more than one book to an array//
 //Display library array//
-//Add button to remove book from library
-//Add event listener to remove button
-//Remove requested book from library array by identifying which book was selected and using its id
-//Display change to web page so user can see they have successfully removed the book
-//Add another book to the array by using the new book
-//Test the app can differentiate between which book needs to be removed
+//Add button to remove book from library//
+//Add event listener to remove button//
+//Remove requested book from library array by identifying which book was selected and using its id//
+//Display change to web page so user can see they have successfully removed the book//
+//Add another book to the array by using the new book//
+//Test the app can differentiate between which book needs to be removed//
 //Format the webpage to display cards as grid
 //Add background colors from Tailwind
 //Change the font

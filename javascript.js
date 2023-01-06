@@ -13,6 +13,14 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+function changeReadStatus(book, event) {
+    if (event.target.checked) {
+        book.read = true;
+    } else {
+        book.read = false;
+    }
+}
+
 function removeBook(book) {
     const bookIndex = libraryArray.indexOf(book);
     libraryArray.splice(bookIndex, 1);
@@ -34,7 +42,20 @@ function createCard(book) {
     cardElement.appendChild(cardPages);
 
     const cardRead = document.createElement('p');
-    cardRead.textContent = book.read;
+    const cardCheckbox = document.createElement('input');
+    cardCheckbox.addEventListener('change', (event) =>
+        changeReadStatus(book, event)
+    );
+    cardCheckbox.setAttribute('type', 'checkbox');
+    cardCheckbox.setAttribute('id', 'read');
+    cardCheckbox.setAttribute('name', 'read');
+    const cardLabel = document.createElement('label');
+    cardLabel.setAttribute('for', 'read');
+    if (book.read === 'true' || book.read === true) {
+        cardCheckbox.setAttribute('checked', '');
+    }
+    cardRead.appendChild(cardCheckbox);
+    cardRead.appendChild(cardLabel);
     cardElement.appendChild(cardRead);
 
     const removeBookButton = document.createElement('button');
