@@ -33,34 +33,23 @@ function removeBook(book) {
 // Displays card element to represent book object based on user's input
 function createCard(book) {
     // Create and display element for book title
-    const cardElement = document.createElement('div.card');
-    cardElement.setAttribute(
-        'style',
-        'height: 200px; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; background-color: #fee2e2;'
-    );
+    const cardElement = document.createElement('div');
     const cardTitle = document.createElement('p');
-    cardTitle.setAttribute('style', 'margin: 0;');
     cardTitle.textContent = `Title: ${book.title}`;
     cardElement.appendChild(cardTitle);
 
     // Create and display element for book auhor
     const cardAuthor = document.createElement('p');
-    cardAuthor.setAttribute('style', 'margin: 0;');
     cardAuthor.textContent = `Author: ${book.author}`;
     cardElement.appendChild(cardAuthor);
 
     // Create and display element for number of pages in book
     const cardPages = document.createElement('p');
-    cardPages.setAttribute('style', 'margin: 0;');
     cardPages.textContent = `Pages: ${book.pages}`;
     cardElement.appendChild(cardPages);
 
     // Create and display element for whether or not the user has read the book
     const cardRead = document.createElement('p');
-    cardRead.setAttribute(
-        'style',
-        'margin: 0; display: flex; align-items: center;'
-    );
     const cardCheckbox = document.createElement('input');
     // Listen for user's check of read checkbox
     cardCheckbox.addEventListener('change', (event) =>

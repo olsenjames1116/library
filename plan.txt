@@ -53,4 +53,4 @@ Steps:
 //Test the app can differentiate between which book needs to be removed//
 //Format the webpage to display cards as grid//
 //Add background colors from Tailwind//
-//Change the font
+//Change the font//
