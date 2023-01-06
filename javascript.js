@@ -1,3 +1,4 @@
+// Global declaration of variables
 const title = document.querySelector('input#title');
 const author = document.querySelector('input#author');
 const pages = document.querySelector('input#pages');
@@ -13,6 +14,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+// Allows the checkbox input for each individual book to change the state of the read property
 function changeReadStatus(book, event) {
     if (event.target.checked) {
         book.read = true;
@@ -21,28 +23,35 @@ function changeReadStatus(book, event) {
     }
 }
 
+// Removes a book at the user's request from the library
 function removeBook(book) {
     const bookIndex = libraryArray.indexOf(book);
     libraryArray.splice(bookIndex, 1);
     displayBooks(libraryArray);
 }
 
+// Displays card element to represent book object based on user's input
 function createCard(book) {
+    // Create and display element for book title
     const cardElement = document.createElement('div.card');
     const cardTitle = document.createElement('p');
     cardTitle.textContent = book.title;
     cardElement.appendChild(cardTitle);
 
+    // Create and display element for book auhor
     const cardAuthor = document.createElement('p');
     cardAuthor.textContent = book.author;
     cardElement.appendChild(cardAuthor);
 
+    // Create and display element for number of pages in book
     const cardPages = document.createElement('p');
     cardPages.textContent = book.pages;
     cardElement.appendChild(cardPages);
 
+    // Create and display element for whether or not the user has read the book
     const cardRead = document.createElement('p');
     const cardCheckbox = document.createElement('input');
+    // Listen for user's check of read checkbox
     cardCheckbox.addEventListener('change', (event) =>
         changeReadStatus(book, event)
     );
@@ -50,6 +59,7 @@ function createCard(book) {
     cardCheckbox.setAttribute('id', 'read');
     cardCheckbox.setAttribute('name', 'read');
     const cardLabel = document.createElement('label');
+    // If user has checked read box, display a check mark
     cardLabel.setAttribute('for', 'read');
     if (book.read === 'true' || book.read === true) {
         cardCheckbox.setAttribute('checked', '');
@@ -58,6 +68,7 @@ function createCard(book) {
     cardRead.appendChild(cardLabel);
     cardElement.appendChild(cardRead);
 
+    // Create and display element for the user to remove book object from library
     const removeBookButton = document.createElement('button');
     removeBookButton.setAttribute('type', 'button');
     removeBookButton.textContent = 'Remove Book';
@@ -85,6 +96,5 @@ submitButton.addEventListener('click', () => {
     );
 
     libraryArray.push(userBook);
-    console.table(libraryArray);
     displayBooks(libraryArray);
 });
