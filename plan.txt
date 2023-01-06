@@ -51,6 +51,6 @@ Steps:
 //Display change to web page so user can see they have successfully removed the book//
 //Add another book to the array by using the new book//
 //Test the app can differentiate between which book needs to be removed//
-//Format the webpage to display cards as grid
-//Add background colors from Tailwind
+//Format the webpage to display cards as grid//
+//Add background colors from Tailwind//
 //Change the font

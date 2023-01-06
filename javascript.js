@@ -36,7 +36,7 @@ function createCard(book) {
     const cardElement = document.createElement('div.card');
     cardElement.setAttribute(
         'style',
-        'height: 200px; width: 200px; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;'
+        'height: 200px; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; background-color: #fee2e2;'
     );
     const cardTitle = document.createElement('p');
     cardTitle.setAttribute('style', 'margin: 0;');
