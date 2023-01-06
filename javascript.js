@@ -71,7 +71,7 @@ function createCard(book) {
     // Create and display element for the user to remove book object from library
     const removeBookButton = document.createElement('button');
     removeBookButton.setAttribute('type', 'button');
-    removeBookButton.textContent = 'Remove Book';
+    removeBookButton.textContent = 'Remove from Library';
     removeBookButton.addEventListener('click', () => removeBook(book));
     cardElement.appendChild(removeBookButton);
     return cardElement;
