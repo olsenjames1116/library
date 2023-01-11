@@ -8,19 +8,48 @@ const clearButton = document.querySelector('div.buttons>button:last-child');
 const mainContent = document.querySelector('div.mainContent');
 let libraryArray = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// function Book(title, author, pages, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+// }
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    get bookTitle() {
+        return this.title;
+    }
+
+    get bookAuthor() {
+        return this.author;
+    }
+
+    get bookPages() {
+        return this.pages;
+    }
+
+    set readStatus(value) {
+        this.read = value;
+    }
+
+    get readStatus() {
+        return this.read;
+    }
 }
 
 // Allows the checkbox input for each individual book to change the state of the read property
 function changeReadStatus(book, event) {
     if (event.target.checked) {
-        book.read = true;
+        book.readStatus = true;
     } else {
-        book.read = false;
+        book.readStatus = false;
     }
 }
 
@@ -36,17 +65,17 @@ function createCard(book) {
     // Create and display element for book title
     const cardElement = document.createElement('div');
     const cardTitle = document.createElement('p');
-    cardTitle.textContent = `Title: ${book.title}`;
+    cardTitle.textContent = `Title: ${book.bookTitle}`;
     cardElement.appendChild(cardTitle);
 
     // Create and display element for book auhor
     const cardAuthor = document.createElement('p');
-    cardAuthor.textContent = `Author: ${book.author}`;
+    cardAuthor.textContent = `Author: ${book.bookAuthor}`;
     cardElement.appendChild(cardAuthor);
 
     // Create and display element for number of pages in book
     const cardPages = document.createElement('p');
-    cardPages.textContent = `Pages: ${book.pages}`;
+    cardPages.textContent = `Pages: ${book.bookPages}`;
     cardElement.appendChild(cardPages);
 
     // Create and display element for whether or not the user has read the book
@@ -63,7 +92,7 @@ function createCard(book) {
     cardLabel.textContent = 'Read';
     // If user has checked read box, display a check mark
     cardLabel.setAttribute('for', 'read');
-    if (book.read === 'true' || book.read === true) {
+    if (book.readStatus === 'true' || book.readStatus === true) {
         cardCheckbox.setAttribute('checked', '');
     }
     cardRead.appendChild(cardCheckbox);
