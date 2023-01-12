@@ -6,14 +6,6 @@ const read = document.querySelector('input#read');
 const submitButton = document.querySelector('div.buttons>button:first-child');
 const clearButton = document.querySelector('div.buttons>button:last-child');
 const mainContent = document.querySelector('div.mainContent');
-let libraryArray = [];
-
-// function Book(title, author, pages, read) {
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.read = read;
-// }
 
 class Book {
     constructor(title, author, pages, read) {
@@ -23,59 +15,99 @@ class Book {
         this.read = read;
     }
 
-    get bookTitle() {
-        return this.title;
+    set title(value) {
+        this._title = value
     }
 
-    get bookAuthor() {
-        return this.author;
+    get title() {
+        return this._title;
     }
 
-    get bookPages() {
-        return this.pages;
+    set author(value) {
+        this._author = value;
     }
 
-    set readStatus(value) {
-        this.read = value;
+    get author() {
+        return this._author;
     }
 
-    get readStatus() {
-        return this.read;
+    set pages(value) {
+        this._pages = value;
+    }
+
+    get pages() {
+        return this._pages;
+    }
+
+    set read(value) {
+        this._read = value;
+    }
+
+    get read() {
+        return this._read;
+    }
+
+    // Allows the checkbox input for each individual book to change the state of the read property
+    changeReadStatus(book, event) {
+        if (event.target.checked) {
+            book.read = true;
+        } else {
+            book.read = false;
+        }
     }
 }
 
-// Allows the checkbox input for each individual book to change the state of the read property
-function changeReadStatus(book, event) {
-    if (event.target.checked) {
-        book.readStatus = true;
-    } else {
-        book.readStatus = false;
+class Library {
+    constructor(array) {
+        this.array = array;
+    }
+
+    get array() {
+        return this._array;
+    }
+
+    set array(value) {
+        this._array = value;
+    }
+
+    pushValue(value){
+        this._array.push(value);
+    }
+
+    displayArray(){
+        mainContent.innerHTML = '';
+        this.array.forEach((book) => {
+        const card = createCard(book);
+        mainContent.appendChild(card);
+        });
+    }
+
+    // Removes a book at the user's request from the library
+    removeBook(book) {
+        const bookIndex = this.array.indexOf(book);
+        this.array.splice(bookIndex, 1);
+        this.displayArray(this.array);
     }
 }
 
-// Removes a book at the user's request from the library
-function removeBook(book) {
-    const bookIndex = libraryArray.indexOf(book);
-    libraryArray.splice(bookIndex, 1);
-    displayBooks(libraryArray);
-}
+let library = new Library([]);
 
 // Displays card element to represent book object based on user's input
 function createCard(book) {
     // Create and display element for book title
     const cardElement = document.createElement('div');
     const cardTitle = document.createElement('p');
-    cardTitle.textContent = `Title: ${book.bookTitle}`;
+    cardTitle.textContent = `Title: ${book.title}`;
     cardElement.appendChild(cardTitle);
 
     // Create and display element for book auhor
     const cardAuthor = document.createElement('p');
-    cardAuthor.textContent = `Author: ${book.bookAuthor}`;
+    cardAuthor.textContent = `Author: ${book.author}`;
     cardElement.appendChild(cardAuthor);
 
     // Create and display element for number of pages in book
     const cardPages = document.createElement('p');
-    cardPages.textContent = `Pages: ${book.bookPages}`;
+    cardPages.textContent = `Pages: ${book.pages}`;
     cardElement.appendChild(cardPages);
 
     // Create and display element for whether or not the user has read the book
@@ -83,7 +115,7 @@ function createCard(book) {
     const cardCheckbox = document.createElement('input');
     // Listen for user's check of read checkbox
     cardCheckbox.addEventListener('change', (event) =>
-        changeReadStatus(book, event)
+        book.changeReadStatus(book, event)
     );
     cardCheckbox.setAttribute('type', 'checkbox');
     cardCheckbox.setAttribute('id', 'read');
@@ -92,7 +124,7 @@ function createCard(book) {
     cardLabel.textContent = 'Read';
     // If user has checked read box, display a check mark
     cardLabel.setAttribute('for', 'read');
-    if (book.readStatus === 'true' || book.readStatus === true) {
+    if (book.read === 'true' || book.read === true) {
         cardCheckbox.setAttribute('checked', '');
     }
     cardRead.appendChild(cardCheckbox);
@@ -103,17 +135,9 @@ function createCard(book) {
     const removeBookButton = document.createElement('button');
     removeBookButton.setAttribute('type', 'button');
     removeBookButton.textContent = 'Remove from Library';
-    removeBookButton.addEventListener('click', () => removeBook(book));
+    removeBookButton.addEventListener('click', () => library.removeBook(book));
     cardElement.appendChild(removeBookButton);
     return cardElement;
-}
-
-function displayBooks(libraryArray) {
-    mainContent.innerHTML = '';
-    libraryArray.forEach((book) => {
-        const card = createCard(book);
-        mainContent.appendChild(card);
-    });
 }
 
 submitButton.addEventListener('click', () => {
@@ -126,11 +150,11 @@ submitButton.addEventListener('click', () => {
         read.value
     );
 
-    libraryArray.push(userBook);
-    displayBooks(libraryArray);
+    library.pushValue(userBook);
+    library.displayArray();
 });
 
 clearButton.addEventListener('click', () => {
-    libraryArray = [];
-    displayBooks();
+    library.array = [];
+    library.displayArray();
 });

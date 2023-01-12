@@ -1,3 +1,9 @@
 {
-    "extends": ["wesbos"]
+    "extends": ["wesbos"],
+    {
+        "max-classes-per-file": [
+            "error",
+            { "ignoreExpressions": true, "max": 2 }
+        ]
+    }
 }
