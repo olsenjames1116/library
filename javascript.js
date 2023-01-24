@@ -1,4 +1,5 @@
 // Global declaration of variables
+const form = document.querySelector('form');
 const title = document.querySelector('input#title');
 const author = document.querySelector('input#author');
 const pages = document.querySelector('input#pages');
@@ -6,6 +7,8 @@ const read = document.querySelector('input#read');
 const submitButton = document.querySelector('div.buttons>button:first-child');
 const clearButton = document.querySelector('div.buttons>button:last-child');
 const mainContent = document.querySelector('div.mainContent');
+const titleError = document.querySelector('input#title+span.error');
+const authorError = document.querySelector('input#author+span.error');
 let libraryArray = [];
 
 function Book(title, author, pages, read) {
@@ -87,18 +90,38 @@ function displayBooks(libraryArray) {
     });
 }
 
-submitButton.addEventListener('click', () => {
-    read.checked === true ? (read.value = true) : (read.value = false);
+function showError() {
+    if (title.validity.valueMissing) {
+        authorError.textContent = '';
+        titleError.textContent = 'You need to enter a title';
+        titleError.className = 'error active';
+    } else {
+        titleError.textContent = '';
+        authorError.textContent = 'You need to enter an author';
+        authorError.className = 'error active';
+    }
+}
 
-    const userBook = new Book(
-        title.value,
-        author.value,
-        pages.value,
-        read.value
-    );
+form.addEventListener('submit', (event) => {
+    if (title.validity.valid && author.validity.valid) {
+        titleError.textContent = '';
+        authorError.textContent = '';
 
-    libraryArray.push(userBook);
-    displayBooks(libraryArray);
+        read.checked === true ? (read.value = true) : (read.value = false);
+
+        const userBook = new Book(
+            title.value,
+            author.value,
+            pages.value,
+            read.value
+        );
+
+        libraryArray.push(userBook);
+        displayBooks(libraryArray);
+    } else {
+        showError();
+        event.preventDefault();
+    }
 });
 
 clearButton.addEventListener('click', () => {
