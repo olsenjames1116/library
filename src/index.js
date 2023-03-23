@@ -1,3 +1,33 @@
+import './style.css';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import {
+    getFirestore,
+    addDoc,
+    collection,
+    serverTimestamp,
+} from 'firebase/firestore';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: 'AIzaSyBw_aR045Q7m3B5swIcEc8ONEXGpxdYHy0',
+    authDomain: 'library-2072e.firebaseapp.com',
+    projectId: 'library-2072e',
+    storageBucket: 'library-2072e.appspot.com',
+    messagingSenderId: '719204014590',
+    appId: '1:719204014590:web:b3cf553ac3a2a8866b88af',
+    measurementId: 'G-0YXLPKM5F4',
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
 // Global declaration of variables
 const form = document.querySelector('form');
 const title = document.querySelector('input#title');
@@ -32,6 +62,21 @@ function removeBook(book) {
     const bookIndex = libraryArray.indexOf(book);
     libraryArray.splice(bookIndex, 1);
     displayBooks(libraryArray);
+}
+
+async function saveBook(book) {
+    try {
+        const docRef = await addDoc(collection(db, 'books'), {
+            title: book.title,
+            author: book.author,
+            pages: book.pages,
+            read: book.read,
+            timestamp: serverTimestamp(),
+        });
+        console.log('Document written with ID: ', docRef.id);
+    } catch (e) {
+        console.error('Error adding document: ', e);
+    }
 }
 
 // Displays card element to represent book object based on user's input
@@ -103,6 +148,7 @@ function showError() {
 }
 
 form.addEventListener('submit', (event) => {
+    event.preventDefault();
     if (title.validity.valid && author.validity.valid) {
         titleError.textContent = '';
         authorError.textContent = '';
@@ -116,11 +162,12 @@ form.addEventListener('submit', (event) => {
             read.value
         );
 
+        saveBook(userBook);
+
         libraryArray.push(userBook);
         displayBooks(libraryArray);
     } else {
         showError();
-        event.preventDefault();
     }
 });
 
